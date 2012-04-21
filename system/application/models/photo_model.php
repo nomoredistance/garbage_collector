@@ -19,12 +19,27 @@ class Photo_model extends Model {
     $this->db->select('vote');
     $this->db->select('lat');
     $this->db->select('long');
+    $this->db->select('response');
 
     if(isset($opt['id']))
     {
       $this->db->where('id', $opt['id']);
       $this->db->limit(1);
     }
+
+    if(isset($opt['lokasi']))
+    {
+      $this->db->like('lokasi', $opt['lokasi']);
+    }
+
+    if(isset($opt['sort']))
+    {
+      if($opt['sort'] == 'most_vote')
+      {
+        $this->db->order_by('vote', 'desc');
+      }
+    }
+
     $this->db->from('garbage');
     $rs = $this->db->get();
 
@@ -35,6 +50,35 @@ class Photo_model extends Model {
     else
     {
       return $rs->result();
+    }
+  }
+
+  function vote_for($pid=FALSE)
+  {
+    if(!$pid) return;
+
+    $this->db->set('vote', 'vote + 1', FALSE);
+    $this->db->where('id', $pid);
+    $this->db->limit(1);
+    $upd = $this->db->update('garbage');
+
+    if($upd)
+    {
+      $this->session->set_userdata('voted-for-'.$pid, 1);
+    }
+
+    return TRUE;
+  }
+
+  function has_voted_for($pid='')
+  {
+    if($this->session->userdata('voted-for-'.$pid))
+    {
+      return TRUE;
+    }
+    else
+    {
+      return FALSE;
     }
   }
 }

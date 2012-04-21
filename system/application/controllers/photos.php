@@ -4,25 +4,44 @@ class Photos extends Controller {
 
 	function Photos()
 	{
-		parent::Controller();	
+    parent::Controller();	
+    $this->load->model('photo_model');
+    $this->load->helper('text');
+    $this->load->helper('typography');
 	}
 	
 	function index()
   {
-    $city = $this->input->post('my-city');
-    $this->session->set_userdata('city', $city);
+    $city = $this->input->post('city');
+    if($city)
+    {
+      $this->session->set_userdata('city', $city);
+    }
+
+    $data = array();
+
+    $data['photos'] = $this->photo_model->get_photos(array(
+      'sort' => 'most_vote',
+      'lokasi' => $this->user_model->get_city()
+    ));
 
 		$this->load->view('htmlhead');
 		$this->load->view('nav-bar');
-		$this->load->view('photos');
+		$this->load->view('photos', $data);
 		$this->load->view('footer');
   }
 
   function view($pid=FALSE)
   {
+    $data = array();
+
+    $data['photos'] = $this->photo_model->get_photos(array(
+      'id' => $pid
+    ));
+
 		$this->load->view('htmlhead');
 		$this->load->view('nav-bar');
-		$this->load->view('photos-detail');
+		$this->load->view('photos-detail', $data);
     $this->load->view('footer');
   }
 
@@ -71,6 +90,32 @@ class Photos extends Controller {
     $ins = $this->db->insert('garbage', $record);
 
     echo 'Success!';
+  }
+
+  function edit_response($pid=FALSE)
+  {
+    if(!$pid || !$this->user_model->is_logged_in())
+    {
+      return;
+    }
+
+    $this->db->set('response', $this->input->post('response-edit'));
+    $this->db->set('status'  , $this->input->post('response-resolve'));
+    $this->db->where('id', $pid);
+    $this->db->limit(1);
+    $upd = $this->db->update('garbage');
+
+    redirect('photos/view/'.$pid);
+  }
+
+  function request_action($pid=FALSE)
+  {
+    if(!$pid)
+    {
+      return;
+    }
+
+    $this->photo_model->vote_for($pid);
   }
 }
 
