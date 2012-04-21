@@ -18,6 +18,11 @@
 
 <script type="text/javascript">
 $(document).ready(function(){
+  if (typeof(console.log) === 'undefined') {
+    console = {};
+    console.log = function (){};
+  }
+
   function whereIs (lat, long) {
     var endPoint = '<?=site_url('util/where_is')?>' + '/' + lat + '/' + long;
     console.log(endPoint);

@@ -17,14 +17,7 @@ class Util extends Controller {
     $data = array();
     $data['response'] = '';
 
-    if($lat === FALSE || $long === FALSE)
-    {}
-
-    $appID = '12345';
-    $endPoint = 'http://where.yahooapis.com/geocode?q=' . $lat . ',' . $long . '&gflags=R&appid=' . $appID;
-
-    $xml = file_get_contents($endPoint);
-    $data['response'] = $xml;
+    $data['response'] = $this->location_model->where_is($lat, $long);
 
     $this->load->view('blank', $data);
   }
