@@ -1,5 +1,5 @@
   <div class="footer">
-    <p class="pull-right"><a href="#">tw</a> <a href="#">fb</a></p>
+    <p class="pull-right" style="font-size: larger;"><a href="#"><span class="icon-twitter-sign"></span> twitter</a> | <a href="#"><span class="icon-facebook-sign"> facebook</a></p>
     <p>&copy; <?=config_item('site_title')?> 2012</p>
   </div>
 
