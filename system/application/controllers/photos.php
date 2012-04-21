@@ -8,7 +8,10 @@ class Photos extends Controller {
 	}
 	
 	function index()
-	{
+  {
+    $city = $this->input->post('my-city');
+    $this->session->set_userdata('city', $city);
+
 		$this->load->view('htmlhead');
 		$this->load->view('nav-bar');
 		$this->load->view('photos');
