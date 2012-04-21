@@ -32,6 +32,21 @@
             <input type="submit" class="btn btn-large btn-primary" value="Save" />
           </form>
         </div>
+        <?php if($this->user_model->is_logged_in()): ?>
+        <!-- upload form -->
+        <div class="well">
+          <form method="post" action="<?=site_url('photos/upload')?>" enctype="multipart/form-data">
+            <input type="hidden" name="MAX_FILE_SIZE" value="2200000" />
+            <input type="hidden" name="id" value="1235" />
+            <input type="hidden" name="lat" value="-6.217374962790827" />
+            <input type="hidden" name="lon" value="106.8151330947876" />
+            <input type="hidden" name="nama" value="<?=htmlspecialchars($this->user_model->get_name());?>" />
+            <input type="hidden" name="keterangan" value="test" />
+            <label for="my-gambar">Image (max 2MB): </label><input id="my-gambar" type="file" name="gambar" />
+            <input type="submit" name="submit" class="btn btn-primary " value="Upload" />
+          </form>
+        </div>
+        <?php endif; ?>
         <div class="well">
           <p>If this is troubling you, click here:</p>
           <p><a class="btn btn-large btn-primary" href="<?=site_url('photos/request_action/1234')?>">Request an Action</a></p>
