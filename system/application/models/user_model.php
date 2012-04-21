@@ -49,6 +49,16 @@ class User_model extends Model {
     return $this->session->userdata('uid');
   }
 
+  function get_email()
+  {
+    return $this->session->userdata('email');
+  }
+
+  function get_name()
+  {
+    return $this->session->userdata('name');
+  }
+
   function get_city()
   {
     return $this->session->userdata('city');

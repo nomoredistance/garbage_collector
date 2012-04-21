@@ -9,9 +9,11 @@
       <a class="brand" href="<?=site_url('home')?>"><?=config_item('site_title')?></a>
       <div class="nav-collapse">
         <ul class="nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class=""><a href="<?=site_url('');?>">Home</a></li>
         <?php if($this->user_model->is_logged_in()): ?>
           <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
+        <?php else: ?>
+          <li><a href="<?=site_url('user/ngo_login')?>">Organization Login</a></li>
         <?php endif; ?>
         </ul>
       </div>
