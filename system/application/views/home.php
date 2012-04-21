@@ -1,6 +1,6 @@
 
-<step id="choose-city" class="step">
-  <div class="step-title">
+<div id="choose-city" class="">
+  <div class="title">
     <h2>What City are You In?</h2>
     <p>Berada di kota mana kamu sekarang?</p>
   </div>
@@ -8,7 +8,7 @@
   <div class="row">
     <div class="span8">
       <form id="form-choose-city" class="" style="">
-        <p><input type="text" class="name input-xlarge" /></p>
+        <p><input id="my-city" type="text" class="input-xlarge" /></p>
         <p><input type="submit" class="btn btn-large btn-primary" value="See City Hazard &raquo;" /></p>
         <!--<p><a href="#add-photos" class="goto-step btn btn-large btn-primary">Go</a></p>-->
       </form>
@@ -19,15 +19,17 @@
 <script type="text/javascript">
 $(document).ready(function(){
   function whereIs (lat, long) {
-    var appID = '12345';
-    var endPoint = 'http://where.yahooapis.com/geocode?q=' + lat + ',' + long + '&gflags=R&appid=' + appID;
+    var endPoint = '<?=site_url('util/where_is')?>' + '/' + lat + '/' + long;
     console.log(endPoint);
     $.ajax({
       type:'get',
       url: endPoint,
       success: function (res) {
-        console.log('success');
-        console.log(res);
+        var city, resJSON = xml2json.parser(res);
+        if (resJSON && resJSON.resultset.error == 0) {
+          city = resJSON.resultset.result.state;
+          $('input#my-city').val(city);
+        }
       },
       error: function () {
         console.log('error looking up location');
