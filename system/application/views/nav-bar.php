@@ -10,6 +10,9 @@
       <div class="nav-collapse">
         <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
+        <?php if($this->user_model->is_logged_in()): ?>
+          <li><a href="<?=site_url('user/logout')?>">Logout</a></li>
+        <?php endif; ?>
         </ul>
       </div>
     </div>

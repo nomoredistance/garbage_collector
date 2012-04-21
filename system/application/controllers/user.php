@@ -11,6 +11,12 @@ class User extends Controller {
 	{
   }
 
+  function logout()
+  {
+    $this->user_model->clean_session();
+    redirect('home');
+  }
+
   function pwd_check($str)
   {
     $email = $this->input->post('my-email');

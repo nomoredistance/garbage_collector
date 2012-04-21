@@ -22,6 +22,7 @@ class User_model extends Model {
   function check_login($email, $pwd)
   {
     $this->db->select('id');
+    $this->db->select('nama');
     $this->db->select('email');
     $this->db->select('lokasi');
     $this->db->where('email', $email);
@@ -35,6 +36,7 @@ class User_model extends Model {
       $row = $rs->row();
 
       $this->session->set_userdata('uid', $row->id);
+      $this->session->set_userdata('name', $row->nama);
       $this->session->set_userdata('email', $row->email);
       $this->session->set_userdata('city', $row->lokasi);
 
@@ -54,8 +56,10 @@ class User_model extends Model {
 
   function clean_session()
   {
-    $this->session->userdata('uid', FALSE);
-    $this->session->userdata('city', FALSE);
+    $this->session->set_userdata('uid', FALSE);
+    $this->session->set_userdata('name', FALSE);
+    $this->session->set_userdata('email', FALSE);
+    $this->session->set_userdata('city', FALSE);
 
     return TRUE;
   }
