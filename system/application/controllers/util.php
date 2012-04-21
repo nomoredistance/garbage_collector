@@ -12,12 +12,14 @@ class Util extends Controller {
   }
 
 
-  function where_is($lat=FALSE, $long=FALSE)
+  function where_is($lat=FALSE, $long=FALSE, $get_city=FALSE)
   {
     $data = array();
     $data['response'] = '';
 
-    $data['response'] = $this->location_model->where_is($lat, $long);
+    $res = $this->location_model->where_is($lat, $long, $get_city);
+
+    $data['response'] = $res;
 
     $this->load->view('blank', $data);
   }
