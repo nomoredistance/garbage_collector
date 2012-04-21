@@ -1,5 +1,5 @@
 
-<div id="choose-city" class="">
+<div id="choose-city" class="hero-unit">
   <div class="title">
     <h2>What City are You In?</h2>
     <p>Berada di kota mana kamu sekarang?</p>
@@ -9,12 +9,12 @@
     <div class="span8">
       <form id="form-choose-city" class="" style="">
         <p><input id="my-city" type="text" class="input-xlarge" /></p>
-        <p><input type="submit" class="btn btn-large btn-primary" value="See City Hazard &raquo;" /></p>
+        <p><input type="submit" class="btn btn-large btn-primary" value="See Environmental Degradation &raquo;" /></p>
         <!--<p><a href="#add-photos" class="goto-step btn btn-large btn-primary">Go</a></p>-->
       </form>
     </div>
   </div>
-</step>
+</div>
 
 <script type="text/javascript">
 $(document).ready(function(){

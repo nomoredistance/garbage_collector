@@ -18,6 +18,7 @@
   </style>
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap-responsive.min.css" type="text/css" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css" type="text/css" />
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
   <script src="<?php echo base_url(); ?>assets/js/xml2json.js"></script>
   <script src="<?php echo base_url(); ?>assets/js/script.js"></script>
 
