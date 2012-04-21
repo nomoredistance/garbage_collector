@@ -11,7 +11,8 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://example.com/";
+$config['base_url']	= "http://192.168.20.242/";
+$config['site_title'] = 'Garbage Collector';
 
 /*
 |--------------------------------------------------------------------------

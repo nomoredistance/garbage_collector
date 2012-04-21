@@ -34,13 +34,14 @@
 | the active record class
 */
 
+// $active_group = "irsyad";
 $active_group = "default";
 $active_record = TRUE;
 
 $db['default']['hostname'] = "localhost";
-$db['default']['username'] = "";
-$db['default']['password'] = "";
-$db['default']['database'] = "";
+$db['default']['username'] = "root";
+$db['default']['password'] = "root";
+$db['default']['database'] = "garbage_collector";
 $db['default']['dbdriver'] = "mysql";
 $db['default']['dbprefix'] = "";
 $db['default']['pconnect'] = TRUE;
@@ -49,6 +50,19 @@ $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = "";
 $db['default']['char_set'] = "utf8";
 $db['default']['dbcollat'] = "utf8_general_ci";
+
+$db['irsyad']['hostname'] = "192.168.20.239";
+$db['irsyad']['username'] = "root";
+$db['irsyad']['password'] = "";
+$db['irsyad']['database'] = "gdbc";
+$db['irsyad']['dbdriver'] = "mysql";
+$db['irsyad']['dbprefix'] = "";
+$db['irsyad']['pconnect'] = TRUE;
+$db['irsyad']['db_debug'] = TRUE;
+$db['irsyad']['cache_on'] = FALSE;
+$db['irsyad']['cachedir'] = "";
+$db['irsyad']['char_set'] = "utf8";
+$db['irsyad']['dbcollat'] = "utf8_general_ci";
 
 
 /* End of file database.php */

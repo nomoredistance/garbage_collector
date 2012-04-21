@@ -1,0 +1,31 @@
+.night-mode { background-color: #000; color: #999 !important; }
+
+/* helpers */
+.show-grid {
+  background-color: #eee !important;
+}
+.droppable-hovered {
+  background-color: #eef !important;
+}
+.droppable-dropped {
+  background-color: #efe !important;
+}
+
+.brand {
+  text-transform: uppercase;
+}
+
+.masker {
+  overflow: hidden;
+}
+
+.footer {
+  margin-top: 45px;
+  padding: 35px 0 36px;
+  border-top: 1px solid #e5e5e5;
+}
+.footer p {
+  margin-bottom: 0;
+  color: #555;
+}
+
